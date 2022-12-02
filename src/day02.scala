@@ -53,18 +53,6 @@ object Solution:
     case 'B' => Play.Paper
     case 'C' => Play.Scissors
 
-  // this is true only for part 1
-  given Decode[XYZ, Play] = ep => ep match
-    case 'X' => Play.Rock
-    case 'Y' => Play.Paper
-    case 'Z' => Play.Scissors
-
-  // this is for part 2
-  given Decode[XYZ, Outcome] = ep => ep match
-    case 'X' => Outcome.Defeat
-    case 'Y' => Outcome.Draw
-    case 'Z' => Outcome.Victory
-
   object Decode: 
     def apply[EP <: EncodedPlay, T](using d: Decode[EP, T]): Decode[EP, T] = d
 
@@ -79,10 +67,22 @@ object Solution:
   def parseInput(readRound: RoundReader)(input: String): List[Round] = input.linesIterator.map(parseRound(readRound)).toList
   
   def part1(input: String): Int = 
+    // this is true only for part 1
+    given Decode[XYZ, Play] = ep => ep match
+      case 'X' => Play.Rock
+      case 'Y' => Play.Paper
+      case 'Z' => Play.Scissors
+
     val readRound: RoundReader = (abc, xyz) => Round(myPlay = Decode[XYZ, Play].decode(xyz), theOthersPlay = Decode[ABC, Play].decode(abc))
     parseInput(readRound)(input).map(_.score).sum
 
-  def part2(input: String): Int =  
+  def part2(input: String): Int = 
+    // this is for part 2
+    given Decode[XYZ, Outcome] = ep => ep match
+      case 'X' => Outcome.Defeat
+      case 'Y' => Outcome.Draw
+      case 'Z' => Outcome.Victory
+      
     val readRound: RoundReader = (abc, xyz) => { 
       val theirs = Decode[ABC, Play].decode(abc)
       val expectedOutcome = Decode[XYZ, Outcome].decode(xyz)
