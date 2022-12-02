@@ -1,5 +1,3 @@
-//> using scala "3.2.1"
-
 package day01
 
 import scala.io.Source
