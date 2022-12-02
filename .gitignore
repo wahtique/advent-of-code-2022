@@ -4,3 +4,11 @@
 .vscode
 src/.bsp
 src/.scala-build
+.bsp/scala-cli.json
+.scala-build/ide-inputs.json
+.scala-build/ide-options-v2.json
+.scala-build/.bloop/project_bd2c96d2de-fd6f273f5c-test.json
+.scala-build/.bloop/project_bd2c96d2de-fd6f273f5c.json
+.scala-build/.bloop/project_bd2c96d2de-fd6f273f5c/project_bd2c96d2de-fd6f273f5c-analysis.bin
+.scala-build/.bloop/project_bd2c96d2de-fd6f273f5c/bloop-internal-classes/main-fgrGDbFIRO-8GLghhDx6VA==/META-INF/semanticdb/project.scala.semanticdb
+.scala-build/project_bd2c96d2de-fd6f273f5c/classes/main/META-INF/semanticdb/project.scala.semanticdb
