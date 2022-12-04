@@ -1,12 +1,8 @@
 package day04
 
-import scala.io.Source
-import java.security.spec.EncodedKeySpec
+import boilerplate.Solve
 
-lazy val testInput = Source.fromFile("input/test/day04").mkString
-lazy val input = Source.fromFile("input/day04").mkString
-
-object Solution:
+object Solution extends Solve("day04"):
 
   def areOverlapping(r1: Range, r2: Range): Boolean = r1.intersect(r2).nonEmpty
 
@@ -24,29 +20,29 @@ object Solution:
     .map(x => x(0).toInt to x(1).toInt)
     .toList
 
-  def lines(input: String): List[String] =
-    input.linesIterator.toList.filterNot(_.isBlank).map(_.trim)
-
-  def part1(input: String): Int =
-    lines(input).map(ranges).map(pair).filter(oneContainsTheOther).size
-  def part2(input: String): Int = lines(input).map(ranges).map(pair).filter(areOverlapping).size
+  override def p1(input: List[String]): Int =
+    input.map(ranges).map(pair).filter(oneContainsTheOther).size
+  override def p2(input: List[String]): Int =
+    input.map(ranges).map(pair).filter(areOverlapping).size
 
 package test:
+  import Solution.*
   @main def part1(): Unit =
-    val result = Solution.part1(testInput)
+    val result = p1(testInput)
     val expected = 2
     assert(result == expected, s"Expected $expected, got $result")
 
   @main def part2(): Unit =
-    val result = Solution.part2(testInput)
+    val result = p2(testInput)
     val expected = 4
     assert(result == expected, s"Expected $expected, got $result")
 
 package main:
+  import Solution.*
   @main def part1(): Unit =
-    val result = Solution.part1(input)
+    val result = p1(input)
     println(s"Assignments: $result.")
 
   @main def part2(): Unit =
-    val result = Solution.part2(input)
+    val result = p2(input)
     println(s"Overlapping assignments: $result.")
