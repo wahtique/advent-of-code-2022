@@ -2,7 +2,7 @@ package day02
 
 import boilerplate.Solve
 
-object Solution extends Solve("day02"):
+object Solution extends Solve[Int]("day02"):
 
   // the game : very classic RockPaperScissors
   // with values for plays and outcomes to spice things up

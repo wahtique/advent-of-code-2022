@@ -2,7 +2,7 @@ package day04
 
 import boilerplate.Solve
 
-object Solution extends Solve("day04"):
+object Solution extends Solve[Int]("day04"):
 
   def areOverlapping(r1: Range, r2: Range): Boolean = r1.intersect(r2).nonEmpty
 

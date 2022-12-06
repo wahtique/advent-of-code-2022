@@ -2,7 +2,7 @@ package day03
 
 import boilerplate.Solve
 
-object Solution extends Solve("day03"):
+object Solution extends Solve[Int]("day03"):
 
   type Item = Char
   extension (i: Item)
